@@ -1,5 +1,5 @@
 <template lang="pug">
-    movieDetail(:movies="moviesList[0]")
+    movieDetail(:movies="moviesList[0].id")
 </template>
 
 <script>
@@ -16,8 +16,9 @@ export default {
     };
   },
   created() {
-    this.moviesList = this.$store.state.data.moviesList.filter(
-      item => this.slugify(item.name) === this.$route.params.slug
+    //Get data from store and split it based on slug
+    this.moviesList = this.$store.state.moviesList.filter(
+      item => item.name != null ? this.slugify(item.name) === this.$route.params.slug : ''
     );
   },
   methods: {

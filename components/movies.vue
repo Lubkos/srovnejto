@@ -8,7 +8,6 @@
                 sidebar(class="col-span-1 mr-4" :categories="categories" :active="activeCategory" :activeCategory.sync="activeCategory")
                 div(class="c-movies")
                     article(class="c-movies__item" v-for="(item,index) in getFilteredData.slice(0,limit)" :key="index")
-                        //nuxt-link(:to="'/detail/' + slugify(item.name)" tag="a" prefetch )
                         nuxt-link(:to="{path: 'detail/' + slugify(item.name), params: { name: item.name }}" tag="a" prefetch )
                             div(class="c-movies__item-image")
                                 img( :src="require('~/assets/img/illustration/mandalorian.jpg')")
@@ -18,9 +17,7 @@
                                 |   {{item.director}}
                             div(class="flex flex-row flex-wrap text-sm")
                                 p(v-for="itemCategory in item.categories" class="mr-3") {{itemCategory}}
-                            //- div(v-if="showDesc == index" class="text-sm")
-                            //-     p {{item.director}}
-                        //span(@click="showMore(index)") Read more
+                            span(class="mx-auto bg-gray-500 mt-3 px-3 py-2 absolute bottom-5 block") Show detail
 </template>
 
 <script>
@@ -49,11 +46,8 @@ export default {
       required: false,
     },
   },
-  //   created() {
-  //       const moviesL = this.movies;
-  //       this.movieList = moviesL;
-  //   },
   computed: {
+    //Filter data based on categories
     getFilteredData() {
       var results = [];
       if (this.activeCategory != null) {
@@ -62,12 +56,12 @@ export default {
             itemin == this.activeCategory ? results.push(item) : ""
           )
         );
-        console.log(results);
       } else {
         results = this.movies;
       }
       return results;
     },
+    //Filter join same categories to one array
     categories() {
       let myArray = [];
       this.movies.filter((item) =>
@@ -82,13 +76,16 @@ export default {
     },
   },
   methods: {
-    showMore(input) {
-      if (this.showDesc == input) {
-        return this.showDesc = "";
-      } else {
-        return this.showDesc = input;
-      }
-    },
+
+    // showMore(input) {
+    //   if (this.showDesc == input) {
+    //     return this.showDesc = "";
+    //   } else {
+    //     return this.showDesc = input;
+    //   }
+    // },
+
+    // Set active category
     setActiveCategory(category) {
       this.activeCategory = category;
     },
@@ -109,9 +106,9 @@ export default {
 
 <style lang="postcss" scoped>
 .c-movies {
-    @apply grid xl:grid-cols-3 md:grid-cols-2 grid-rows-3 gap-4 col-span-3;
+    @apply grid xl:grid-cols-3 md:grid-cols-2 grid-rows-3 gap-4 col-span-3 pb-20;
   &__item {
-    @apply shadow-sm p-4 bg-gray-800 transition-colors duration-300 rounded-sm border border-gray-700 text-white;
+    @apply shadow-sm p-4 bg-gray-800 transition-colors duration-300 rounded-sm border border-gray-700 text-white relative pb-20;
 
     &:hover {
       @apply bg-gray-900 cursor-pointer;

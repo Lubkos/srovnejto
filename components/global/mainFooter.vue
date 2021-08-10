@@ -1,7 +1,7 @@
 <template lang="pug">
  footer(class="c-footer")
   div(class="container")
-    div(align-v="center" class="row")
+    div(class="row text-center")
 </template>
 
 <script>

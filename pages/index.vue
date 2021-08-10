@@ -13,12 +13,11 @@ export default {
   data() {
     return {
       moviesList: Array,
-      errored: false,
-      loading: true,
     };
   },
   created(){
-    this.moviesList = this.$store.state.data.moviesList;
+    //Get data from store
+    this.moviesList = this.$store.state.moviesList;
   },
 };
 </script>

@@ -40,12 +40,7 @@ export default {
       {
         rel: "icon",
         type: "image/svg+xml",
-        //href: "/img/favicon.svg",
-      },
-      {
-        rel: "icon",
-        type: "image/x-icon",
-        //href: "/img/favicon.ico",
+        href: "/img/favicon.svg",
       },
     ],
     script: [
@@ -55,7 +50,7 @@ export default {
     ],
   },
   plugins: [
-    "~/plugins/observer.client",
+    "~/plugins/observer.client"
   ],
   /*
    ** Auto import components
@@ -122,11 +117,11 @@ export default {
     ],
   },
 
-  router: {
-    linkActiveClass: "active",
-    linkExactActiveClass: "active",
-    prefetchLinks: false,
-  },
+  // router: {
+  //   linkActiveClass: "active",
+  //   linkExactActiveClass: "active",
+  //   prefetchLinks: false,
+  // },
 
   generate: {
     fallback: true, // if you want to use '404.html' instead of the default '200.html'

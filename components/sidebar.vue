@@ -4,7 +4,7 @@
             h3(class="text-xl mb-4") Categories
             div(class="c-sidebar__in")
                 a(v-for="item in categories" class="c-sidebar__in-item" :class="{'active': active == item}" @click="$emit('update:activeCategory',item)") {{item}}
-                a(class="c-sidebar__in-item" :class="{'active': active == null}" @click="$emit('update:activeCategory',null)") Vše
+                a(class="c-sidebar__in-item" :class="{'active': active == null}" @click="$emit('update:activeCategory',null)") All
 </template>
 
 <script>
